@@ -12,15 +12,14 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-
 /**
  * 
  *
  */
-public class AddressBookCsvIOService {
+public class AddressBookCSV {
 	public String addressBookCSVFileName;
 
-	public AddressBookCsvIOService(String addressBookCSVFileName) {
+	public AddressBookCSV(String addressBookCSVFileName) {
 		super();
 		this.addressBookCSVFileName = addressBookCSVFileName;
 	}

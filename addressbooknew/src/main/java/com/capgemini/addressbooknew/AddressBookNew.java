@@ -9,8 +9,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-
-public class AddressBookMain {
+public class AddressBookNew {
 	private static final String CITY = "CITY";
 	private static final String STATE = "STATE";
 	static Scanner sc = new Scanner(System.in);
@@ -18,11 +17,11 @@ public class AddressBookMain {
 	public static String name;
 	public static List<ContactDetails> contacts;
 	public Map<String, ContactDetails> nameToContactMap;
-	static Map<String, AddressBookMain> nameToAddressBookMap = new HashMap<String, AddressBookMain>();
+	static Map<String, AddressBookNew> nameToAddressBookMap = new HashMap<String, AddressBookNew>();
 	public Map<String, List<ContactDetails>> cityToContactsMap;
 	public Map<String, List<ContactDetails>> stateToContactsMap;
 
-	public AddressBookMain(String name) {
+	public AddressBookNew(String name) {
 		super();
 		this.bookname = name;
 		this.contacts = new LinkedList<ContactDetails>();
@@ -53,7 +52,7 @@ public class AddressBookMain {
 		System.out.println("Enter the name of " + option + ": ");
 		String cityOrStateName = sc.nextLine();
 		nameToAddressBookMap.keySet().stream().forEach(addressBookName -> {
-			AddressBookMain addressBook = nameToAddressBookMap.get(addressBookName);
+			AddressBookNew addressBook = nameToAddressBookMap.get(addressBookName);
 			System.out.println("Persons in the " + option + " " + cityOrStateName + " in the address book "
 					+ addressBookName + " are: ");
 			addressBook.contacts.stream().filter(
@@ -81,7 +80,7 @@ public class AddressBookMain {
 		System.out.println("Choose \n1 To view by city\n2 To view by state\nEnter your choice: ");
 		String option = (Integer.parseInt(sc.nextLine()) == 1) ? CITY : STATE;
 		nameToAddressBookMap.keySet().stream().forEach(addressBookName -> {
-			AddressBookMain addressBook = nameToAddressBookMap.get(addressBookName);
+			AddressBookNew addressBook = nameToAddressBookMap.get(addressBookName);
 			addressBook.contactsListByCityAndState();
 			System.out.println("In the address book " + addressBookName);
 			System.out.println("");
@@ -98,7 +97,7 @@ public class AddressBookMain {
 	}
 	public static void countByCityAndState() {
 		nameToAddressBookMap.keySet().stream().forEach(addressBookName -> {
-			AddressBookMain addressBook = nameToAddressBookMap.get(addressBookName);
+			AddressBookNew addressBook = nameToAddressBookMap.get(addressBookName);
 			System.out.println("In the address book " + addressBookName);
 			System.out.println("");
 			System.out.println("Contact counts by city");
@@ -110,10 +109,10 @@ public class AddressBookMain {
 			System.out.println("");
 		});
 	}
-	public static void sortedByFirstName(Map<String, AddressBookMain> addressBookMap) {
+	public static void sortedByFirstName(Map<String, AddressBookNew> addressBookMap) {
 		List<ContactDetails> contactList = null;
-		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
-			AddressBookMain value = entry.getValue();
+		for (Map.Entry<String, AddressBookNew> entry : addressBookMap.entrySet()) {
+			AddressBookNew value = entry.getValue();
 			for (int i = 0; i < value.contacts.size(); i++) {
 				contactList = contacts;
 			}
@@ -122,10 +121,10 @@ public class AddressBookMain {
 				.sorted(Comparator.comparing(ContactDetails::getFirstName)).collect(Collectors.toList());
 		System.out.println(sortedList);
 	}
-	public static void sortedByCity(Map<String, AddressBookMain> addressBookMap) {
+	public static void sortedByCity(Map<String, AddressBookNew> addressBookMap) {
 		List<ContactDetails> contactList = null;
-		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
-			AddressBookMain value = entry.getValue();
+		for (Map.Entry<String, AddressBookNew> entry : addressBookMap.entrySet()) {
+			AddressBookNew value = entry.getValue();
 			for (int i = 0; i < value.contacts.size(); i++) {
 				contactList = contacts;
 			}
@@ -135,10 +134,10 @@ public class AddressBookMain {
 		System.out.println(sortedList);
 	}
 
-	public static void sortedByState(Map<String, AddressBookMain> addressBookMap) {
+	public static void sortedByState(Map<String, AddressBookNew> addressBookMap) {
 		List<ContactDetails> contactList = null;
-		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
-			AddressBookMain value = entry.getValue();
+		for (Map.Entry<String, AddressBookNew> entry : addressBookMap.entrySet()) {
+			AddressBookNew value = entry.getValue();
 			for (int i = 0; i < value.contacts.size(); i++) {
 				contactList = contacts;
 			}
@@ -148,10 +147,10 @@ public class AddressBookMain {
 		System.out.println(sortedList);
 	}
 
-	public static void sortedByZip(Map<String, AddressBookMain> addressBookMap) {
+	public static void sortedByZip(Map<String, AddressBookNew> addressBookMap) {
 		List<ContactDetails> contactList = null;
-		for (Map.Entry<String, AddressBookMain> entry : addressBookMap.entrySet()) {
-			AddressBookMain value = entry.getValue();
+		for (Map.Entry<String, AddressBookNew> entry : addressBookMap.entrySet()) {
+			AddressBookNew value = entry.getValue();
 			for (int i = 0; i < value.contacts.size(); i++) {
 				contactList = contacts;
 			}
@@ -169,7 +168,7 @@ public class AddressBookMain {
 			if (choice == 1) {
 				System.out.println("Enter name of the address book");
 				String name = sc.nextLine();
-				nameToAddressBookMap.put(name, new AddressBookMain(name));
+				nameToAddressBookMap.put(name, new AddressBookNew(name));
 			} else if (choice == 2)
 				break;
 			else {
@@ -182,7 +181,7 @@ public class AddressBookMain {
 		addAddressBooks();
 		do {
 			System.out.println("Enter the name of the address book to continue: ");
-			AddressBookMain addressBook = nameToAddressBookMap.get(sc.nextLine());
+			AddressBookNew addressBook = nameToAddressBookMap.get(sc.nextLine());
 			addressBook.addContact();
 			System.out.println(addressBook);
 			System.out.println("Enter 1 to continue with another address book, else enter 0: ");

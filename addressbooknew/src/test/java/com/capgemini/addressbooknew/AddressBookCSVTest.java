@@ -1,4 +1,4 @@
-package com.cjharkhandgemini.addressbooknew;
+package com.capgemini.addressbooknew;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
@@ -10,7 +10,7 @@ public class AddressBookCSVTest {
 		ContactDetails riya=new ContactDetails("riya", "singh", "agrico", "jharkhand", 21, 7890, "riya@gmail.com");
 		ContactDetails neha=new ContactDetails("neha", "singh", "agrico", "jharkhand", 21, 1343, "neha@gmail.com");
 		List<ContactDetails> contacts=Arrays.asList(new ContactDetails[] {manasi, riya, neha});
-		AddressBookCsvIOService addressBookCSVIOService=new AddressBookCsvIOService("addressBook-test-CSV.csv");
+		AddressBookCSV addressBookCSVIOService=new AddressBookCSV("addressBook-test-CSV.csv");
 		addressBookCSVIOService.writeContactDetails(contacts);
 		List<ContactDetails> readContacts=addressBookCSVIOService.readContactDetails();
 		Assert.assertEquals(manasi.toString(),readContacts.get(0).toString());
